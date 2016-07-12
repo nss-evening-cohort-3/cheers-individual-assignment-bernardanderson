@@ -12,14 +12,19 @@ namespace Cheers
             // Variables section 
             String greeting = "What's your name?";
             String prompt = "> ";
-            String cheer_prefix = "Give me a... ";
+            String cheer_prefix = "Give me ";
+            String requires_an = "aeiolnfshrmx"; // An array of characters that require the prefix "an"
 
             Console.WriteLine(greeting);
             Console.Write(prompt);
-            String user_name = Console.ReadLine(); // Read from terminal to a variable
+            String user_name = Console.ReadLine().ToLower(); // Read from terminal to a variable
 
             for (int i = 0; i <user_name.Length; i++) {
-                Console.WriteLine(cheer_prefix + user_name.ToLower()[i]);
+                if (requires_an.IndexOf(user_name[i]) > -1 ) {
+                    Console.WriteLine(cheer_prefix + "an.. " + user_name[i]);
+                } else {
+                    Console.WriteLine(cheer_prefix + "a..  " + user_name[i]);
+                }
             }
 
             // user_name.ToUpper() is turning the user's name to uppercase.
